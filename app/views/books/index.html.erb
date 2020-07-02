@@ -1,18 +1,20 @@
-<div class="">
-	<h1>New Book</h1>
-		<%= form_for(@book) do |f| %>
-			<h4>タイトル</h4>
-			<%= f.text_field :title %>
-			<h4>感想</h4>
-			<%= f.text_area :body %>
-			<br><%= f.submit 'Create Book' %></br>
-		<% end %>
-</div>
-
-<div class="">
-	<h1>Books一覧</h1>
-		<% @books.each do |book| %>
-			<p>タイトル</p>
-			<span><%= book.title %></span>
-		<% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<h1>New Book</h1>
+				<%= form_for(@book) do |f| %>
+					<h4>タイトル</h4>
+					<%= f.text_field :title %>
+					<h4>感想</h4>
+					<%= f.text_area :body %>
+					<br><%= f.submit 'Create Book' %></br>
+				<% end %>
+		</div>
+			<h1>Books一覧</h1>
+				<% @books.each do |book| %>
+					<p>タイトル</p>
+					<span><%= link_to book.title,book_path(book.id) %></span>
+					<!-- (book.id)意味はわかるが、book_pathだけで詳細画面に表示されると思っていて、何故(book.id)がないと詳細画面が表示されないのかがわからない、rails routesで決まっている？ -->
+				<% end %>
+	</div>
 </div>
